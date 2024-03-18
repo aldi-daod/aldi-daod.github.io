@@ -4,23 +4,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-    content="Camera Preconditioning (CamP) improves and accelerates camera optimization for NeRFs.">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+    content="Align and Distill: Unifying and Extending Domain Adaptive Object Detection">
+  <meta name="keywords" content="Computer vision, domain adaptation, object detection">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CamP: Camera Preconditioning for Neural Radiance Fields</title>
+  <title>Align and Distill: Unifying and Extending Domain Adaptive Object Detection</title>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1WYQRMQV0T"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZTBSK388F0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-1WYQRMQV0T');
+    gtag('config', 'G-ZTBSK388F0');
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript"
+    src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   </script>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
@@ -36,8 +39,7 @@
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
-  <script src="./static/js/video_comparison.js"></script>
+  <!-- <script src="./static/js/index.js"></script> -->
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏕️</text></svg>">
 </head>
@@ -52,36 +54,6 @@
         <span aria-hidden="true"></span>
       </a>
     </div>
-    <div class="navbar-menu">
-      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-        <a class="navbar-item" href="https://keunhong.com">
-          <span class="icon">
-            <i class="fas fa-home"></i>
-          </span>
-        </a>
-
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            More Research
-          </a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="https://hypernerf.github.io">
-              HyperNeRF
-            </a>
-            <a class="navbar-item" href="https://nerfies.github.io">
-              Nerfies
-            </a>
-            <a class="navbar-item" href="https://latentfusion.github.io">
-              LatentFusion
-            </a>
-            <a class="navbar-item" href="https://photoshape.github.io">
-              PhotoShape
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
   </nav>
 
 
@@ -91,35 +63,44 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
 
-            <h1 class="title is-1 publication-title">CamP: Camera Preconditioning<br />for Neural Radiance Fields</h1>
+            <h1 class="title is-1 publication-title">Align and Distill: Unifying and Extending Domain Adaptive Object Detection</h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="https://keunhong.com">Keunhong Park</a>,</span>
+                <a href="https://justinkay.github.io">Justin Kay</a><sup>1</sup>,</span>
               <span class="author-block">
-                <a href="https://henzler.github.io">Philipp Henzler</a>,</span>
+                <a href="https://timm.haucke.xyz">Timm Haucke</a><sup>1</sup>,</span>
               <span class="author-block">
-                <a href="https://bmild.github.io">Ben Mildenhall</a>,</span>
+                <a href="https://suzanne-stathatos.github.io/">Suzanne Stathatos</a><sup>2</sup>,</span>
               <span class="author-block">
-                <a href="https://jonbarron.info">Jonathan T. Barron</a>,
+                <a href="https://www.amazon.science/author/tiffany-deng">Siqi Deng</a><sup>3</sup>,
               </span>
               <span class="author-block">
-                <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a>
+                <a href="https://www.skagitfisheries.org/about-2/board/">Erik Young</a><sup>4</sup>,
+              </span><br>
+              <span class="author-block">
+                <a href="https://www.eas.caltech.edu/people/perona">Pietro Perona</a><sup>2,3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://beerys.github.io/">Sara Beery</a><sup>1,=</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://gvh.codes">Grant Van Horn</a><sup>5,=</sup>
               </span>
             </div>
 
             <div class="is-size-5 publication-authors">
-              <span class="author-block">Google Research</span>
+              <span class="author-block">MIT<sup>1</sup>, Caltech<sup>2</sup>, AWS<sup>3</sup>, Skagit Fisheries Enhancement Group<sup>4</sup>, UMass Amherst<sup>5</sup></span><br>
             </div>
 
-            <div class="is-size-5 publication-venue">
-              SIGGRAPH Asia 2023
-            </div>
+            <!-- <div class="is-size-5 publication-venue">
+              *Crossed fingers*
+            </div> -->
 
             <div class="column has-text-centered">
               <div class="publication-links">
                 <!-- PDF Link. -->
                 <span class="link-block">
-                  <a href="https://arxiv.org/pdf/2308.10902" class="external-link button is-normal is-rounded is-dark">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                     </span>
@@ -127,7 +108,7 @@
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="https://arxiv.org/abs/2308.10902" class="external-link button is-normal is-rounded is-dark">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="ai ai-arxiv"></i>
                     </span>
@@ -135,22 +116,22 @@
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="https://github.com/jonbarron/camp_zipnerf" class="external-link button is-normal is-rounded is-dark" title="Code">
+                  <a href="https://github.com/justinkay/aldi" class="external-link button is-normal is-rounded is-dark" title="Code">
                     <span class="icon">
                         <i class="fab fa-github"></i>
                     </span>
                     <span>Code</span>
                     </a>
                 </span>
-                <!--
+                
                 <span class="link-block">
-                  <a class="external-link button is-normal is-rounded is-dark" title="Coming soon!" disabled>
+                  <a href="https://github.com/visipedia/caltech-fish-counting/tree/main/CFC-DAOD" class="external-link button is-normal is-rounded is-dark" title="Data">
                     <span class="icon">
                         <i class="far fa-images"></i>
                     </span>
                     <span>Data</span>
                     </a>
-                  </span> -->
+                  </span>
     
               </div>
 
@@ -164,70 +145,25 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <!-- Zoom Container. -->
-        <div class="zoom-container" data-gt-img-src="./static/images/gardenchairs_gt.png" data-zoom-factor="1"
-          data-default-u="0.09" data-default-v="0.3" id="teaser-zoom-container">
-          <div class="columns is-mobile is-marginless">
-            <div class="column is-one-third">
-              <div class="zoom-gt-container">
-                <!-- <img class="zoom-gt-img" src="./static/images/gardenchairs_gt.png" alt="Ground Truth" /> -->
-                <canvas></canvas>
-              </div>
-            </div>
-            <div class="column is-one-sixth">
-              <div class="zoom-lens" style="background-image: url(./static/images/gardenchairs_no_optim_aligned.png)">
-              </div>
-              <div class="zoom-lens"
-                style="background-image: url(./static/images/gardenchairs_no_optim_aligned_depth.png)"></div>
-            </div>
-            <div class="column is-one-sixth">
-              <div class="zoom-lens" style="background-image: url(./static/images/gardenchairs_no_precon_aligned.png)">
-              </div>
-              <div class="zoom-lens"
-                style="background-image: url(./static/images/gardenchairs_no_precon_aligned_depth.png)"></div>
-            </div>
-            <div class="column is-one-sixth">
-              <div class="zoom-lens"
-                style="background-image: url(./static/images/gardenchairs_with_precon_aligned.png)">
-              </div>
-              <div class="zoom-lens"
-                style="background-image: url(./static/images/gardenchairs_with_precon_aligned_depth.png)">
-              </div>
-            </div>
-            <div class="column is-one-sixth">
-              <div class="zoom-lens" style="background-image: url(./static/images/gardenchairs_gt.png)">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="columns is-mobile has-text-centered is-marginless is-size-7-mobile">
-          <div class="column is-one-third">(a) Ground truth with annotation</div>
-          <div class="column is-one-sixth">(b) Zip-NeRF</div>
-          <div class="column is-one-sixth">(c) BARF-NGP</div>
-          <div class="column is-one-sixth">(d) Ours</div>
-          <div class="column is-one-sixth">(e) Ground truth</div>
-        </div>
-        <div class="content has-text-centered is-size-7-mobile">
-          Interactive visualization. Hover or tap to move the zoom cursor.
-        </div>
-        <!-- / Zoom Container. -->
+        <img src="static/images/aldi_banner_4.png" />
         <div class="content has-text-justified">
           <p>
-            CamP <a href="https://en.wikipedia.org/wiki/Preconditioner">preconditions</a> camera optimization in
-            camera-optimizing Neural Radiance Fields, significantly improving
-            their ability to jointly recover the scene and camera parameters.
+            <b>Align and Distill (ALDI) achieves state-of-the-art performance in domain adaptive object detection (DAOD) 
+              and provides a unified framework for fair comparison.</b> 
           </p>
           <p>
-            Here we show a NeRF reconstructed from a cellphone capture -- using camera poses estimated using ARKit.
-            We apply our method to <a href="https://jonbarron.info/zipnerf/">Zip-NeRF</a> (d), a state-of-the-art NeRF
-            approach that relies entirely oncamera poses
-            obtained from <a href="https://colmap.github.io/">COLMAP</a>.
-            Adding joint camera optimization to Zip-NeRF (b) using an improved version of the camera parameterization of
-            <a href="https://chenhsuanlin.bitbucket.io/bundle-adjusting-NeRF/">BARF</a>, adapted to the <a
-              href="https://nvlabs.github.io/instant-ngp/">Instant NGP</a> setting, improves
-            image quality, but many artifacts still remain.
-            (d) Our proposed preconditioned camera optimization technique improves camera estimates which results in a
-            higher fidelity scene reconstruction.
+          We show: 
+            <ol>
+              <li>Inconsistent implementation practices give the appearance of steady progress in DAOD (left bars); 
+                reimplementation and fair comparison with ALDI shows less difference between methods than previously 
+                reported (middle bars).</li>
+              <li>A fairly constructed source-only model (blue line) outperforms many existing DAOD methods, 
+                indicating less progress has been made than previously reported; and a proper oracle (orange line) 
+                outperforms <i>all</i> existing methods, in contrast to previously-published results.</li>
+              <li>Our proposed method ALDI++ (green bars)
+                achieves state-of-the-art performance on  DAOD benchmarks such as Cityscapes → Foggy Cityscapes and is 
+                complementary to ongoing advances in object detection like VitDet.</li>
+            </ol>
           </p>
         </div>
       </div>
@@ -242,47 +178,32 @@
       <h2 class="title is-3">Abstract</h2>
       <div class="content has-text-justified">
         <p>
-          Neural Radiance Fields (NeRF) can be optimized to obtain high-fidelity 3D scene reconstructions of objects
-          and large-scale scenes.
-          However, NeRFs require accurate camera parameters as input --- inaccurate camera parameters result in
-          blurry renderings.
-          Extrinsic and intrinsic camera parameters are usually estimated using Structure-from-Motion (SfM) methods
-          as a pre-processing step to NeRF, but these techniques rarely yield perfect estimates.
-          Thus, prior works have proposed jointly optimizing camera parameters alongside a NeRF, but these methods
-          are prone to local minima in challenging settings.
+          Object detectors often perform poorly on data that differs from their training set. 
+          Domain adaptive object detection (DAOD) methods have recently demonstrated strong results on addressing this challenge.
         </p>
         <p>
-          In this work, we analyze how different camera parameterizations affect this joint optimization problem,
-          and observe that standard parameterizations exhibit large differences in magnitude with respect to small
-          perturbations, which can lead to an ill-conditioned optimization problem.
-          We propose using a proxy problem to compute a whitening transform that eliminates the correlation between
-          camera parameters and normalizes their effects, and we propose to use this transform as a
-          <i>preconditioner</i> for the camera parameters during joint optimization.
+          Unfortunately, we identify systemic benchmarking pitfalls that call past results into question and hamper further progress:
+          <ol type="a">
+            <li>Overestimation of performance due to underpowered baselines.</li>
+            <li>Inconsistent implementation practices preventing transparent comparisons of methods.</li>
+            <li>Lack of generality due to outdated backbones and lack of diversity in benchmarks.</li>
+          </ol>
         </p>
         <p>
-          Our preconditioned camera optimization significantly improves reconstruction quality on scenes from the
-          <a href="https://jonbarron.info/mipnerf360/">Mip-NeRF 360</a> dataset: we reduce error rates (RMSE) by 67%
-          compared to state-of-the-art NeRF approaches
-          that do not optimize for cameras like Zip-NeRF, and by 29% relative to state-of-the-art joint optimization
-          approaches using the camera parameterization of <a href="https://postech-cvlab.github.io/SCNeRF/">SCNeRF</a>.
-          Our approach is easy to implement, does not significantly increase runtime, can be applied to a wide
-          variety of camera parameterizations, and can straightforwardly be incorporated into other NeRF-like
-          models.
+          We address these problems by introducing:
+          <ol>
+            <li>A unified benchmarking and implementation framework, <a href="https://github.com/justinkay/aldi">Align and Distill (ALDI)</a>,
+               enabling comparison of DAOD methods and supporting future development.</li>
+            <li>A fair and modern training and evaluation protocol for DAOD that addresses benchmarking pitfalls.</li>
+            <li>A new DAOD benchmark dataset, <a href="https://github.com/visipedia/caltech-fish-counting/tree/main/CFC-DAOD">CFC-DAOD</a>, enabling evaluation on diverse real-world data.</li>
+            <li>A new method, ALDI++, that achieves state-of-the-art results by a large margin. 
+              ALDI++ outperforms the previous state-of-the-art by +3.5 AP50 on Cityscapes → Foggy Cityscapes, 
+              +5.7 AP50 on Sim10k → Cityscapes (where ours is the <i>only</i> method to outperform a fair baseline), 
+              and +2.0 AP50 on CFC Kenai → Channel.</li>
+          </ol>
         </p>
-      </div>
-      <!--/ Abstract. -->
 
-      <!-- Paper video. -->
-      <!-- <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
       </div>
-    </div> -->
-      <!--/ Paper video. -->
     </div>
   </section>
 
@@ -290,424 +211,277 @@
 
   <section class="section">
     <div class="container is-max-desktop">
-      <h2 class="title is-3">Camera Preconditioning</h2>
-
+      <h2 class="title is-3">Align and Distill (ALDI): Unifying DAOD</h2>
       <div class="content has-text-justified">
         <p>
-          We demonstrate the impact of our method on the SE3+Focal camera parameterization.
-          We apply a small perturbation to each parameter and visualize how preconditioning unifies the scale of the
-          parameters (right) whereas
-          the original parameterization exhibits large differences (left).
+          Two methodological themes have dominated recent DAOD research: <i>feature alignment</i> and 
+          <i>self-training/self-distillation</i>. We use these commonalities to motivate our unified framework, 
+          <i>Align and Distill (ALDI)</i>.
         </p>
       </div>
-      <h5 class="title is-5">Rotation</h5>
-      <video id="replay-video" controls muted preload playsinline autoplay loop width="100%">
-        <source src="./static/videos/jiggle_rotation.mp4" type="video/mp4">
-      </video>
-      <h5 class="title is-5">Translation</h5>
-      <video id="replay-video" controls muted preload playsinline autoplay loop width="100%">
-        <source src="./static/videos/jiggle_translation.mp4" type="video/mp4">
-      </video>
-      <h5 class="title is-5">Focal length</h4>
-        <video id="replay-video" controls muted preload playsinline autoplay loop width="100%">
-          <source src="./static/videos/jiggle_focal.mp4" type="video/mp4">
-        </video>
-        <div class="columns is-mobile has-text-centered is-size-7-mobile">
-          <div class="column is-one-half">(a) SE3+Focal </div>
-          <div class="column is-one-half">(b) SE3+Focal+CamP (Ours)</div>
+
+      <div class="columns">
+        <div class="column"></div>
+        <div class="column is-half">
+          <object data="static/images/aldi_framework_final.svg" type="image/svg+xml" width="100%">
+            <img src="static/images/aldi_framework_final.png" width="100%"/>
+          </object>
         </div>
+        <div class="column"></div>
+      </div>
+      
+      <div class="content has-text-justified">
+        <p>
+          ALDI is a student-teacher framework for DAOD with three computation branches. At each training step 
+          (moving left to right and bottom to top): 
+          
+          <ol>
+            <li>$B_{src}$ labeled source images $x_{src}$ are sampled, 
+              transformed according to $T_{src}$, and passed to a student model $\theta_{stu}$, where supervised loss $L_{sup}$ 
+              is computed using ground truth labels $y_{src}$.</li>
+            <li>
+              $B_{tgt}$ unlabeled target images $x_{tgt}$ are sampled, transformed according to $T_{tgt}$, and passed to the student 
+              to obtain predictions $p_{tgt}$. Alignment objectives $L_{align}$ are computed using $x_{src}$ and $x_{tgt}$.
+            </li>
+            <li>
+              The same unlabeled target data $x_{tgt}$ is weakly transformed and passed to a teacher model $\theta_{tch}$, 
+              and postprocessed to obtain teacher preds $\hat{p}_{tgt}$. Distillation loss $L_{distill}$ is computed between 
+              teacher and student predictions. A stop gradient (SG) is used on the teacher model, and the teacher is updated 
+              every training step to be the EMA of the student's weights.  
+            </li>
+          </ol>
+        </p>
+
+        <p>
+          To demonstrate the broad applicability of our framework, we re-implement five recent DAOD methods on top of ALDI using 
+          the following settings. The methods are: <a href="https://link.springer.com/article/10.1007/s11263-021-01447-x">SADA</a>,
+           <a href="https://arxiv.org/abs/2206.06293">Probabilistic Teacher (PT)</a>, 
+          <a href="https://arxiv.org/abs/2003.00707">Unbiased Mean Teacher (UMT)</a>, 
+          <a href="https://arxiv.org/abs/2212.01322">Masked-Image Consistency (MIC)</a>, and 
+          <a href="https://arxiv.org/abs/2111.13216">Adaptive Teacher (AT)</a>.
+        </p>
+        <img src="static/images/aldi_table.png"/>
+        <p>
+          <b>Burn-in:</b> fixed duration (Fixed), our approach (Ours, see ALDI++ below). 
+          <b>Augs. $T_{src}, T_{tgt}$:</b> Random flip (F), multi-scale (M), crop & pad (CP), color jitter (J), 
+          cutout (C), MIC. ${\frac{1}{2}}$: augs used on half the images in the batch. 
+          <b>$\frac{B_{tgt}}{B}$:</b> Target-domain portion of minibatch of size $B$. 
+          <b>Postprocess:</b> Processing of teacher preds before distillation: sigmoid/softmax (Sharpen), sum class preds 
+          for pseudo-objectness (Sum), conf. thresholding (Thresh), NMS. 
+          <b>$L_{distill}$:</b> Distillation losses: hard pseudo-labels (Hard), continuous targets (Soft). 
+          <b>$L_{align}$:</b> Feature alignment losses: image-level adversarial (Img), instance-level adversarial (Inst), 
+          image-to-image translation (Img2Img). 
+          <b>AP50$_{FCS}$:</b> Performance on Foggy Cityscapes. 
+          $^\dagger$: settings used in \methodname implementation (last column) but not in the original implementation 
+          (second-to-last column). $^{at}$: source-only and oracle results sourced from AT.</p>
+      </div>
     </div>
   </section>
 
+  <hr />
+
   <section class="section">
     <div class="container is-max-desktop">
-
-      <h2 class="title is-3">Mobile Phone Captures</h2>
-
+      <h2 class="title is-3">ALDI++: Improving DAOD</h2>
       <div class="content has-text-justified">
+        
         <p>
-          Modern cellphones are able to estimate pose information using visual-inertial odometry,
-          which is often used for Augmented Reality (AR) applications. While the poses are sufficiently good for
-          AR effects,
-          it can be challenging to recover high quality NeRFs from those sequences without resorting to running
-          expensive, offline SfM pipelines.
+          We propose two novel enhancements to the <i>Align and Distill</i> approach, resulting in a new method ALDI++. 
+          These enhancements lead to state-of-the-art results.
+        </p>
+
+        <h4 class="title is-4">Robust Burn-In</h2>
+
+        <p>
+          First we propose a new ''burn-in'' strategy for pretraining a teacher model $\theta_{tch}$ on source-only data $X_{src}$. 
+          A key challenge in student-teacher methods is improving target-domain pseudo-label quality. 
+          We point out that psuedo-label quality in the early stages of self-training is largely determined by the 
+          <i>out-of-distribution (OOD) generalization</i> capabilities of the initial teacher model $\theta^{init}_{tch}$, 
+          and thus propose a training strategy aimed at improving OOD generalization during burn-in.
+          We add strong data augmentations including random resizing, color jitter, and random erasing, and keep an EMA copy of the 
+          model during burn-in.
+        </p>
+
+        <div class="columns">
+          <!-- <div class="column"></div> -->
+          <div class="column is-one-half">
+            <div class="columns">
+              <div class="column"></div>
+              <div class="column is-6">
+                <object data="static/images/burnin.svg" type="image/svg+xml" width="100%">
+                  <img src="static/images/burnin.png" width="100%"/>
+                </object>
+              </div>
+              <div class="column"></div>
+            </div>
+          </div>
+          <!-- <div class="column"></div> -->
+          <div class="column is-one-half">
+            <img src="static/images/burn_in_viz_v6.png" width="100%"/>
+          </div>
+          <!-- <div class="column"></div> -->
+        </div>
+        
+        <p>
+          Our proposed burn-in strategy improves AP50$_{FCS}$ by +4.7 and reduces training time by 10x compared to no burn-in.
+        </p>
+
+        <h4 class="title is-4">Multi-task Soft Distillation</h2>
+
+          <div class="columns">
+            <div class="column"></div>
+            <div class="column is-one-half">
+              <object data="static/images/distill.svg" type="image/svg+xml" width="100%">
+                <img src="static/images/distill.png" width="100%"/>
+              </object>
+            </div>
+            <div class="column"></div>
+          </div>
+
+          <p>
+            Most prior work utilizes confidence thresholding and non-maximum suppression to generate ''hard'' pseudo-labels from 
+            teacher predictions $\hat{p}_{tgt}$. However in object detection this strategy is sensitive to the confidence threshold 
+            chosen, leading to both false positive and false negative errors that harm self-training.
+            We take inspiration from the knowledge distillation literature and propose instead using ''soft'' distillation 
+            losses—<i>i.e.,</i> using teacher prediction scores as targets without thresholding—allowing us to eliminate 
+            the confidence threshold hyperparameter. 
+
+          </p>
+          <p>
+            We distill each task of Faster R-CNN—Region Proposal Network localization ($rpn$) and objectness ($obj$), and 
+            Region-of-Interest Heads localization ($roih$) and classification ($cls$)—independently.
+            At each stage, the teacher provides distillation targets for the same set of input proposals used by the 
+            student—<i>i.e.,</i> anchors $A$ in the first stage, and <i>student</i> region proposals $p^{rpn}_{tgt}$ in the second stage. 
+            Please see our paper for more implementation details.
+          </p>
+
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">The CFC-DAOD Dataset</h2>
+      <div class="content has-text-justified">
+        
+
+        <p>
+          DAOD benchmarks have focused largely on urban driving scenarios with synthetic distribution 
+          shifts (<i>e.g.,</i> <a href="https://www.cityscapes-dataset.com/">Cityscapes</a>, 
+          <a href="https://www.cityscapes-dataset.com/">Foggy Cityscapes</a>, 
+          <a href="https://fcav.engin.umich.edu/projects/driving-in-the-matrix">Sim10k</a>). 
+          We argue a greater diversity of benchmarks is needed to determine whether DAOD methods
+          are broadly applicable and to ensure we are not overfitting to one particular domain.
+        </p>
+
+        <div class="columns">
+          <div class="column"></div>
+          <div class="column is-two-thirds">
+            <img src="static/images/cfc-daod.png" width="100%"/>
+          </div>
+          <div class="column"></div>
+        </div>
+
+        <p>
+          We introduce an extension to the <a href="https://github.com/visipedia/caltech-fish-counting">Caltech Fish Counting Dataset</a>—a 
+          domain generalization benchmark sourced from a real-world environmental monitoring application—with new data 
+          to enable DAOD. We call our new benchmark <a href="https://github.com/visipedia/caltech-fish-counting/tree/main/CFC-DAOD">CFC-DAOD</a>.
         </p>
         <p>
-          Here we show reconstructions computed from casually captured scenes using the open source
-          <a href="https://github.com/jc211/NeRFCapture">NeRF Capture app</a> on an iPhone 13 Pro, which exports
-          camera poses estimated by ARKit.
-          We show qualitative comparisons that highlight the benefits of camera optimization.
+          CFC-DAOD focuses on detecting fish (white bounding boxes) in sonar imagery under domain shift 
+          caused by environmental differences between the training location (Kenai) and testing location (Channel). 
+          Our dataset contains 168k bounding boxes in 29k frames sampled from 150 new videos captured over two days from 
+          3 different sonar cameras on the Channel river, enabling DAOD experiments. Our dataset is substantially larger 
+          than existing DAOD benchmarks, and we show that the ranking of DAOD methods is not consistent across datasets, thus 
+          the research community will benefit from another point of comparison.
         </p>
-      </div>
-
-      <div class="content">
-        <div class="tabs-widget">
-          <div class="tabs is-centered">
-            <ul class="is-marginless">
-              <li class="is-active"><a>gardenchairs</a></li>
-              <li><a>catgrass</a></li>
-              <li><a>jade</a></li>
-              <li><a>butcherblock</a></li>
-            </ul>
-          </div>
-          <div class="tabs-content">
-            <div>
-              <video id="replay-video" controls muted preload playsinline autoplay loop width="100%">
-                <source src="./static/videos/gardenchairs_stacked.mp4" type="video/mp4">
-              </video>
-              <div class="columns is-mobile has-text-centered is-size-7-mobile">
-                <div class="column is-one-half">(a) ARKit Poses (w/o COLMAP) </div>
-                <div class="column is-one-half">(b) ARKit Poses + CamP (Ours)</div>
-              </div>
-            </div>
-
-            <div>
-              <video id="replay-video" controls muted preload playsinline autoplay loop width="100%">
-                <source src="./static/videos/catgrass_stacked.mp4" type="video/mp4">
-              </video>
-              <div class="columns is-mobile has-text-centered is-size-7-mobile">
-                <div class="column is-one-half">(a) ARKit Poses (w/o COLMAP) </div>
-                <div class="column is-one-half">(b) ARKit Poses + CamP (Ours)</div>
-              </div>
-            </div>
-
-            <div>
-              <video id="replay-video" controls muted preload playsinline autoplay loop width="100%">
-                <source src="./static/videos/jade_stacked.mp4" type="video/mp4">
-              </video>
-              <div class="columns is-mobile has-text-centered is-size-7-mobile">
-                <div class="column is-one-half">(a) ARKit Poses (w/o COLMAP) </div>
-                <div class="column is-one-half">(b) ARKit Poses + CamP (Ours)</div>
-              </div>
-            </div>
-
-            <div>
-              <video id="replay-video" controls muted preload playsinline autoplay loop width="100%">
-                <source src="./static/videos/butcherblock_stacked.mp4" type="video/mp4">
-              </video>
-              <div class="columns is-mobile has-text-centered is-size-7-mobile">
-                <div class="column is-one-half">(a) ARKit Poses (w/o COLMAP) </div>
-                <div class="column is-one-half">(b) ARKit Poses + CamP (Ours)</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <h2 class="title is-3">Mip-NeRF 360 Dataset</h2>
-
-        <!-- Zoom Container. -->
-        <div class="zoom-container" data-gt-img-src="./static/images/treehill_gt.png" data-zoom-factor="2"
-          data-default-u="0.73" data-default-v="0.29" id="teaser-zoom-container">
-          <div class="columns is-mobile is-marginless">
-            <div class="column is-one-third">
-              <div class="zoom-gt-container">
-                <img class="zoom-gt-img" src="./static/images/treehill_gt.png" alt="Ground Truth" />
-                <canvas></canvas>
-              </div>
-            </div>
-            <div class="column is-one-sixth">
-              <div class="zoom-lens" style="background-image: url(./static/images/treehill_no_optim_aligned.png)">
-              </div>
-              <div class="zoom-lens" style="background-image: url(./static/images/treehill_no_optim_aligned_depth.png)">
-              </div>
-            </div>
-            <div class="column is-one-sixth">
-              <div class="zoom-lens" style="background-image: url(./static/images/treehill_no_precon_aligned.png)">
-              </div>
-              <div class="zoom-lens"
-                style="background-image: url(./static/images/treehill_no_precon_aligned_depth.png)">
-              </div>
-            </div>
-            <div class="column is-one-sixth">
-              <div class="zoom-lens" style="background-image: url(./static/images/treehill_with_precon_aligned.png)">
-              </div>
-              <div class="zoom-lens"
-                style="background-image: url(./static/images/treehill_with_precon_aligned_depth.png)">
-              </div>
-            </div>
-            <div class="column is-one-sixth">
-              <div class="zoom-lens" style="background-image: url(./static/images/treehill_gt.png)">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="columns is-mobile has-text-centered is-marginless is-size-7-mobile">
-          <div class="column is-one-third">(a) Ground truth with annotation</div>
-          <div class="column is-one-sixth">(b) Zip-NeRF</div>
-          <div class="column is-one-sixth">(c) +SCNeRF</div>
-          <div class="column is-one-sixth">(d) +CamP (ours)</div>
-          <div class="column is-one-sixth">(e) Ground truth</div>
-        </div>
-        <div class="content has-text-centered is-size-7-mobile">
-          Interactive visualization. Hover or tap to move the zoom cursor.
-        </div>
-        <!-- / Zoom Container. -->
-        <div class="content has-text-justified">
-          <p>
-            Static NeRF methods such as Zip-NeRF (b) rely on poses from a preprocessing step such as COLMAP to
-            produce good results. Even these poses may be imperfect, leading to blurring and artifacts.
-            The treehill scene in the Mip-NeRF 360 dataset is an example of a scene with noisy camera estimates.
-            Adding a state-of-the-art
-            camera optimization method such as SCNeRF (c) ameliorates this slightly but artifacts in distance parts of
-            the
-            scene still
-            remain. Our method is able to enhance SCNeRF by preconditioning its parameterization thereby achieving
-            significantly sharper results.
-          </p>
-        </div>
-
-        <div class="content">
-          <h2 class="title is-4">Side-by-Side Comparisons on Perturbed Mip-NeRF 360 Dataset</h2>
-          <p>
-            Next we show a side-by-side comparison between SCNeRF with and without preconditioning on the perturbed
-            Mip-NeRF 360 dataset. Preconditioning allows the optimization converge to better estimates for the camera
-            poses resulting in sharper details and less artifacts.
-          </p>
-
-          <div class="tabs-widget">
-            <div class="tabs is-centered">
-              <ul class="is-marginless">
-                <li class="is-active"><a>bicycle</a></li>
-                <li><a>flowerbed</a></li>
-                <li><a>gardenvase</a></li>
-                <li><a>treehill</a></li>
-                <li><a>fullkitchen</a></li>
-              </ul>
-            </div>
-            <div class="content has-text-centered is-size-7-mobile">
-              Interactive visualization. Hover or tap to move the split.
-            </div>
-            <div class="tabs-content">
-              <!-- Begin bicycle. -->
-              <div>
-                <div class="tabs-widget">
-                  <div class="tabs is-centered is-toggle is-toggle-rounded is-small">
-                    <ul class="is-marginless">
-                      <li class="is-active"><a>RGB</a></li>
-                      <li><a>Depth</a></li>
-                    </ul>
-                  </div>
-                  <div class="tabs-content">
-                    <div class="video-comparison">
-                      <video class="video" width=100% loop playsinline muted
-                        src="./static/videos/bicycle_comparison_stacked_v2.mp4"></video>
-                      <canvas></canvas>
-                    </div>
-                    <div class="video-comparison">
-                      <video class="video" width=100% loop playsinline muted
-                        src="./static/videos/bicycle_comparison_stacked_depth_v2.mp4"></video>
-                      <canvas></canvas>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- End bicycle. -->
-              <!-- Begin flowerbed. -->
-              <div>
-                <div class="tabs-widget">
-                  <div class="tabs is-centered is-toggle is-toggle-rounded is-small">
-                    <ul class="is-marginless">
-                      <li class="is-active"><a>RGB</a></li>
-                      <li><a>Depth</a></li>
-                    </ul>
-                  </div>
-                  <div class="tabs-content">
-                    <div class="video-comparison">
-                      <video class="video" width=100% loop playsinline autoplay muted
-                        src="./static/videos/flowerbed_comparison_stacked_v2.mp4"></video>
-                      <canvas></canvas>
-                    </div>
-                    <div class="video-comparison">
-                      <video class="video" width=100% loop playsinline autoplay muted
-                        src="./static/videos/flowerbed_comparison_stacked_depth_v2.mp4"></video>
-                      <canvas></canvas>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- End flowerbed. -->
-              <!-- Begin gardenvase. -->
-              <div>
-                <div class="tabs-widget">
-                  <div class="tabs is-centered is-toggle is-toggle-rounded is-small">
-                    <ul class="is-marginless">
-                      <li class="is-active"><a>RGB</a></li>
-                      <li><a>Depth</a></li>
-                    </ul>
-                  </div>
-                  <div class="tabs-content">
-                    <div class="video-comparison">
-                      <video class="video" width=100% loop playsinline autoplay muted
-                        src="./static/videos/gardenvase_comparison_stacked_v2.mp4"></video>
-                      <canvas></canvas>
-                    </div>
-                    <div class="video-comparison">
-                      <video class="video" width=100% loop playsinline autoplay muted
-                        src="./static/videos/gardenvase_comparison_stacked_depth_v2.mp4"></video>
-                      <canvas></canvas>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- End gardenvase. -->
-              <!-- Begin treehill. -->
-              <div>
-                <div class="tabs-widget">
-                  <div class="tabs is-centered is-toggle is-toggle-rounded is-small">
-                    <ul class="is-marginless">
-                      <li class="is-active"><a>RGB</a></li>
-                      <li><a>Depth</a></li>
-                    </ul>
-                  </div>
-                  <div class="tabs-content">
-                    <div class="video-comparison">
-                      <video class="video" width=100% loop playsinline autoplay muted
-                        src="./static/videos/treehill_comparison_stacked_v2.mp4"></video>
-                      <canvas></canvas>
-                    </div>
-                    <div class="video-comparison">
-                      <video class="video" width=100% loop playsinline autoplay muted
-                        src="./static/videos/treehill_comparison_stacked_depth_v2.mp4"></video>
-                      <canvas></canvas>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- End treehill. -->
-              <!-- Begin fullkitchen. -->
-              <div>
-                <div class="tabs-widget">
-                  <div class="tabs is-centered is-toggle is-toggle-rounded is-small">
-                    <ul class="is-marginless">
-                      <li class="is-active"><a>RGB</a></li>
-                      <li><a>Depth</a></li>
-                    </ul>
-                  </div>
-                  <div class="tabs-content">
-                    <div class="video-comparison">
-                      <video class="video" width=100% loop playsinline autoplay muted
-                        src="./static/videos/fullkitchen_comparison_stacked_v2.mp4"></video>
-                      <canvas></canvas>
-                    </div>
-                    <div class="video-comparison">
-                      <video class="video" width=100% loop playsinline autoplay muted
-                        src="./static/videos/fullkitchen_comparison_stacked_depth_v2.mp4"></video>
-                      <canvas></canvas>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- End fullkitchen. -->
-            </div>
-          </div>
-        </div>
-
-        <div class="container is-max-desktop">
-          <h2 class="title is-3">NeRF-Synthetic Dataset</h2>
-          <div class="content has-text-justified">
-            <p>
-              CamP can converge quickly even when the intrinsics of a scene are unknown. We evaluate on a more
-              challenging
-              version of the perturbed NeRF-Synthetic benchmark proposed in BARF where we also perturb the focal length
-              and
-              perspective of the cameras.
-            </p>
-            <p>
-              We compare our method to an improved version of BARF that has
-              been adapted to the Instant NGP setting (BARF-NGP) for faster convergence. BARF is unable to converge to
-              the
-              correct
-              camera positions leading to visual artifacts and floaters in the reconstruction.
-            </p>
-          </div>
-          <h3 class="title is-4">Convergence</h2>
-            <div class="content has-text-centered">
-              <video id="replay-video" controls muted preload playsinline autoplay loop width="100%">
-                <source src="./static/videos/lego_stacked_camera.mp4" type="video/mp4">
-              </video>
-              <div class="columns is-mobile has-text-centered">
-                <div class="column is-one-half">(a) BARF-NGP</div>
-                <div class="column is-one-half">(b) Ours</div>
-              </div>
-
-              <div class="content has-text-justified">
-                <p>
-                  When the focal lengths of the cameras are unknown, the BARF formulation fails to find the correct
-                  camera poses due to perspective ambiguities. Our preconditioned camera optimization is able to
-                  quickly converge to the correct solution.
-                </p>
-                <p>
-                  Even in the presence of perspective ambiguities the reconstruction may look correct at first glance.
-                  However, compared to the reconstruction with the correct cameras there are significantly more
-                  artifacts
-                  around the boundaries. Floaters caused by inaccurate boundaries can be clearly seen in the depth.
-                </p>
-              </div>
-
-              <div class="tabs-widget">
-                <div class="tabs is-centered is-toggle is-toggle-rounded">
-                  <ul class="is-marginless">
-                    <li class="is-active"><a>RGB</a></li>
-                    <li><a>Depth</a></li>
-                  </ul>
-                </div>
-                <div class="tabs-content">
-                  <div>
-                    <video id="replay-video" controls muted preload playsinline autoplay loop width="100%">
-                      <source src="./static/videos/lego_stacked_rgb_annotated.mp4" type="video/mp4">
-                    </video>
-                    <div class="columns is-mobile has-text-centered">
-                      <div class="column is-one-half">(a) BARF-NGP</div>
-                      <div class="column is-one-half">(b) Ours</div>
-                    </div>
-                  </div>
-                  <div>
-                    <video id="replay-video" controls muted preload playsinline autoplay loop width="100%">
-                      <source src="./static/videos/lego_stacked_depth.mp4" type="video/mp4">
-                    </video>
-                    <div class="columns is-mobile has-text-centered">
-                      <div class="column is-one-half">(a) BARF-NGP</div>
-                      <div class="column is-one-half">(b) Ours</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-
-        </div>
 
       </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">A New Experimental Protocol for DAOD</h2>
+      <div class="content has-text-justified">
+        
+        <p>
+          To measure DAOD methods' performance, researchers use <i>source-only models</i> and <i>oracle models</i> as points of 
+          reference. Source-only models—sometimes also referred to as <i>baselines</i>—are trained with source-domain data only, 
+          representing a lower bound for performance without domain adaptation. Oracle models are trained with <i>supervised</i> 
+          target-domain data, representing a fully-supervised upper bound. The goal in DAOD is to close the gap between source-only 
+          and oracle performance without target-domain supervision. 
+          
+        </p>
+        <p>
+          We find that in prior work,source-only and oracle models are consistently constructed in a way that does not properly 
+          isolate domain-adaptation-specific components, leading to misattribution of performance improvements. 
+        </p>
 
 
-      <!-- Concurrent Work. -->
-      <!-- <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
 
-        <div class="content has-text-justified">
+        <p>
+          <div class="columns">
+              <img src="static/images/baselines.png" width="100%"/>
+          </div>
+        </p>
+
+        <p>
+          The goal of DAOD is to develop adaptation techniques that use unlabeled target-domain data to improve target-domain performance. 
+          Thus, in order to properly isolate <i>adaptation-specific</i> techniques, <b>any technique that does not need target-domain data 
+          to run should also be used by source-only and oracle models.</b> In our case, this means that source-only and oracle models 
+          should also utilize the same strong augmentations and EMA updates as DAOD methods. We show that including these components 
+          significantly improves both source-only and oracle model performance (+7.2 and +2.6 AP50 on Foggy Cityscapes, respectively). 
+          This has significant implications for DAOD research: because source-only and oracle models have not been constructed with 
+          equivalent components, performance gains stemming from better generalization have until now been <i>misattributed</i> 
+          to DAOD. With properly constructed source-only and oracle models, the gains from DAOD are much more modest.
+        </p>
+
+
+        <h4 class="title is-4">Modernizing Architectures</h2>
+
           <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
+            Prior art in DAOD has used older backbones (<i>e.g.,</i> VGG-16) in order to compare to previously-published results. 
+            The underlying assumption is that methods will perform equivalently across backbone architectures. 
+            By reimplementing methods in ALDI, we are able to upgrade to a modern detector framework and backbone, and show 
+            that in fact the <i>ranking of methods changes across benchmarks and architectures</i>, revealing that previously-published 
+            results may be uninformative for practitioners using modern architectures.
           </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p>
-        </div>
+
       </div>
-    </div> -->
-      <!--/ Concurrent Work. -->
+    </div>
+  </section>
 
+  <hr />
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Results</h2>
+      <div class="content has-text-justified">
+        
+        <div class="columns">
+            <img src="static/images/sota_v6.png" width="100%"/>
+        </div>
+
+        <p>
+          <!-- ALDI++ outperforms all prior work on CS → FCS, Sim10k → CS, and CFC Kenai → Channel.  -->
+          We provide a fair comparison of ALDI++ with five existing state-of-the-art approaches by upgrading them to use the 
+          ALDI framework. We see that some prior methods continue to provide benefit on top of a modern architecture but 
+          others lag behind modern source-only models. ALDI++ outperforms prior work on all datasets studied by a significant 
+          margin: +3.5 AP50 on CS → FCS, +5.7 AP50 on Sim10k → CS, and +2.0 AP50 on CFC Kenai → Channel. 
+          Notably, ALDI++ is the <i>only</i> method to outperform a source-only model on Sim10k → CS.
+        </p>
+
+        <p>
+          Our framework, dataset, and state-of-the-art method offer a critical reset for DAOD and provide a strong foundation 
+          for future research. 
+        </p>
+
+      </div>
     </div>
   </section>
 
@@ -717,17 +491,14 @@
     <div class="container is-max-desktop content">
       <h2 class="title">Acknowledgements</h2>
       <p>
-        Thanks to <a href="http://szeliski.org/">Rick Szeliski</a> and <a
-          href="https://homes.cs.washington.edu/~sagarwal/">Sameer Agarwal</a>
-        for their comments on the text; and <a href="https://cs.stanford.edu/~poole/">Ben Poole</a>, <a
-          href="https://holynski.org/">Aleksander Holynski</a>,
-        <a href="https://pratulsrinivasan.github.io/">Pratul Srinivasan</a>, <a href="https://www.battal.me/">Ben
-          Attal</a>,
-        <a href="https://phogzone.com/">Peter Hedman</a>, <a href="https://matthewpburruss.com/">Matthew Burruss</a>,
-        Laurie Zhang, Matthew Levine, and <a href="https://people.csail.mit.edu/fcole/">Forrester Cole</a> for their
-        advice and help.
-        Thanks to <a href="https://dorverbin.github.io/">Dor Verbin</a> for providing code for the video comparison
-        tool and helping with the preparation of the NeRF-synthetic dataset.
+        This material is based upon work supported by: NSF CISE Graduate Fellowships Grant #2313998, MIT EECS department fellowship 
+        #4000184939, MIT J-WAFS seed grant #2040131, and Caltech Resnick Sustainability Institute Impact Grant ''Continuous, 
+        accurate and cost-effective counting of migrating salmon for conservation and fishery management in the Pacific Northwest.'' 
+        Any opinions, findings, and conclusions or recommendations expressed in this material are those of the authors and do not 
+        necessarily reflect the views of NSF, MIT, J-WAFS, Caltech, or RSI. The authors acknowledge the MIT SuperCloud and Lincoln 
+        Laboratory Supercomputing Center for providing HPC resources. We also thank the Alaska Department of Fish and Game for 
+        their ongoing collaboration and for providing data, and Sam Heinrich, Neha Hulkund, Kai Van Brunt, and Rangel Daroya for 
+        helpful feedback.
       </p>
     </div>
   </section>
@@ -735,14 +506,8 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@article{park2023camp,
-  author    = {Park, Keunhong; Henzler, Philipp; Mildenhall, Ben; Barron, Jonathan T.; Martin-Brualla, Ricardo},
-  title     = {CamP: Camera Preconditioning for Neural Radiance Fields},
-  journal = {ACM Trans. Graph.},
-  publisher = {ACM},
-  year      = {2023},
-  issue_date = {December 2023},
-}</code></pre>
+      <pre><code>TODO 
+      </code></pre>
     </div>
   </section>
 
@@ -750,10 +515,10 @@
   <footer class="footer">
     <div class="container">
       <div class="content has-text-centered">
-        <a class="icon-link" href="https://arxiv.org/abs/2308.10902">
+        <a class="icon-link" href="">
           <i class="fas fa-file-pdf"></i>
         </a>
-        <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <a class="icon-link" href="https://github.com/justinkay/aldi" class="external-link" disabled>
           <i class="fab fa-github"></i>
         </a>
       </div>
@@ -761,19 +526,8 @@
         <div class="column is-8">
           <div class="content">
             <p>
-              This website is licensed under a <a rel="license"
-                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-                Commons Attribution-ShareAlike 4.0 International License</a>.
+              Website code sourced from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. Thanks!
             </p>
-            <p>
-              This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source
-                code</a> of this website,
-              we just ask that you link back to this page in the footer.
-              Please remember to remove the analytics code included in the header of the website which
-              you do not want on your website.
-            </p>
-            <p>The video comparison tool is from the <a
-                href="https://dorverbin.github.io/refnerf/index.html">Ref-NeRF</a> project by Dor Verbin.</p>
           </div>
         </div>
       </div>
