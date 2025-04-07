@@ -43,6 +43,18 @@
   <!-- <link rel="icon"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏕️</text></svg>"> -->
   <link rel="icon" type="image/x-icon" href="static/favicon/favicon.ico">
+
+  <style>
+    /* Hide tab content by default, then reveal the active one */
+    .tab-content {
+      display: none;
+    }
+    .tab-content.is-active {
+      display: block;
+    }
+  </style>
+
+
   </head>
 
 <body>
@@ -137,6 +149,17 @@
               </div>
 
             </div>
+
+            <div class="content has-text-centered">
+              <p>
+                <a href="https://paperswithcode.com/sota/unsupervised-domain-adaptation-on-cityscapes-1?p=align-and-distill-unifying-and-improving"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/align-and-distill-unifying-and-improving/unsupervised-domain-adaptation-on-cityscapes-1"/></a><br>
+                <a href="https://paperswithcode.com/sota/unsupervised-domain-adaptation-on-sim10k-to-3?p=align-and-distill-unifying-and-improving"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/align-and-distill-unifying-and-improving/unsupervised-domain-adaptation-on-sim10k-to-3"/></a><br>
+                <a href="https://paperswithcode.com/sota/unsupervised-domain-adaptation-on-cfc-daod?p=align-and-distill-unifying-and-improving"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/align-and-distill-unifying-and-improving/unsupervised-domain-adaptation-on-cfc-daod"/></a>
+      
+              </p>
+            </div>
+
+
           </div>
         </div>
       </div>
@@ -146,82 +169,44 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
+
         <img src="static/images/aldi_banner_4.png" />
-        <div class="content has-text-justified">
+
+        <div class="content has-text-centered">
           <p>
-            <b>Align and Distill (ALDI) achieves state-of-the-art performance in domain adaptive object detection (DAOD) 
-              and provides a unified framework for fair comparison.</b> 
+            <b>TLDR:</b> We introduce a new <b>framework (ALDI)</b>, <b>state-of-the-art method (ALDI++)</b>, <b>dataset (CFC-DAOD)</b>, and  <b>benchmarking protocol</b>  for unsupervised domain adaptation of object detectors (DAOD).
           </p>
-          <p>
-          We show: 
-            <ol>
-              <li>Inconsistent implementation practices give the appearance of steady progress in DAOD (left bars); 
-                reimplementation and fair comparison with ALDI shows less difference between methods than previously 
-                reported (middle bars).</li>
-              <li>A fairly constructed source-only model (blue line) outperforms many existing DAOD methods, 
-                indicating less progress has been made than previously reported; and a proper oracle (orange line) 
-                outperforms <i>all</i> existing methods, in contrast to previously-published results.</li>
-              <li>Our proposed method ALDI++ (green bars)
-                achieves state-of-the-art performance on  DAOD benchmarks such as Cityscapes → Foggy Cityscapes and is 
-                complementary to ongoing advances in object detection like VitDet.</li>
-            </ol>
+          <p class="has-text-centered">
+            Published in <a href="https://openreview.net/forum?id=ssXSrZ94sR">Transactions on Machine Learning Research 2025</a> with a <span style="color:red">Featured Certification (Spotlight)</span>.
           </p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <hr />
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <!-- Abstract. -->
-      <h2 class="title is-3">Abstract</h2>
-      <div class="content has-text-justified">
-        <p>
-          Object detectors often perform poorly on data that differs from their training set. 
-          Domain adaptive object detection (DAOD) methods have recently demonstrated strong results on addressing this challenge.
-        </p>
-        <p>
-          Unfortunately, we identify systemic benchmarking pitfalls that call past results into question and hamper further progress:
-          <ol type="a">
-            <li>Overestimation of performance due to underpowered baselines.</li>
-            <li>Inconsistent implementation practices preventing transparent comparisons of methods.</li>
-            <li>Lack of generality due to outdated backbones and lack of diversity in benchmarks.</li>
-          </ol>
-        </p>
-        <p>
-          We address these problems by introducing:
-          <ol>
-            <li>A unified benchmarking and implementation framework, <a href="https://github.com/justinkay/aldi">Align and Distill (ALDI)</a>,
-               enabling comparison of DAOD methods and supporting future development.</li>
-            <li>A fair and modern training and evaluation protocol for DAOD that addresses benchmarking pitfalls.</li>
-            <li>A new DAOD benchmark dataset, <a href="https://github.com/visipedia/caltech-fish-counting/tree/main/CFC-DAOD">CFC-DAOD</a>, enabling evaluation on diverse real-world data.</li>
-            <li>A new method, ALDI++, that achieves state-of-the-art results by a large margin. 
-              ALDI++ outperforms the previous state-of-the-art by +3.5 AP50 on Cityscapes → Foggy Cityscapes, 
-              +5.7 AP50 on Sim10k → Cityscapes (where ours is the <i>only</i> method to outperform a fair baseline), 
-              and +2.0 AP50 on CFC Kenai → Channel.</li>
-          </ol>
-        </p>
+        
+        
 
       </div>
     </div>
   </section>
 
-  <hr />
+
+  <hr /> 
 
   <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3">Align and Distill (ALDI): Unifying DAOD</h2>
-      <div class="content has-text-justified">
+    <div class="container is-max-desktop has-text-centered">
+      <h2 class="title is-3">ALDI: A Unified Framework for DAOD</h2>
+      <div class="content has-text-centered">
         <p>
-          Two methodological themes have dominated recent DAOD research: <i>feature alignment</i> and 
-          <i>self-training/self-distillation</i>. We use these commonalities to motivate our unified framework, 
-          <i>Align and Distill (ALDI)</i>.
+          We propose a new framework, <b><i>Align and Distill (ALDI)</i></b>, that unifies two common themes within domain adaptive object detection:
+          <i>feature <b>al</b>ignment</i> and 
+          <i>self-<b>di</b>stillation</i>. 
+        </p>
+        <p>
+          ALDI is architecture agnostic, <a href="https://github.com/justinkay/aldi">supporting</a> <b>Faster R-CNN, DETR,</b> and <b>YOLO</b>; and <b>ResNet, ConvNeXt,</b> and <b>ViT</b> out of the box.
+        
         </p>
       </div>
+  
 
-      <div class="columns">
+      <!-- <div class="columns">
         <div class="column"></div>
         <div class="column is-half">
           <object data="static/images/aldi_framework_final.svg" type="image/svg+xml" width="100%">
@@ -229,83 +214,137 @@
           </object>
         </div>
         <div class="column"></div>
-      </div>
+      </div> -->
       
-      <div class="content has-text-justified">
-        <p>
-          ALDI is a student-teacher framework for DAOD with three computation branches. At each training step 
-          (moving left to right and bottom to top): 
-          
-          <ol>
-            <li>$B_{src}$ labeled source images $x_{src}$ are sampled, 
-              transformed according to $T_{src}$, and passed to a student model $\theta_{stu}$, where supervised loss $L_{sup}$ 
-              is computed using ground truth labels $y_{src}$.</li>
-            <li>
-              $B_{tgt}$ unlabeled target images $x_{tgt}$ are sampled, transformed according to $T_{tgt}$, and passed to the student 
-              to obtain predictions $p_{tgt}$. Alignment objectives $L_{align}$ are computed using $x_{src}$ and $x_{tgt}$.
-            </li>
-            <li>
-              The same unlabeled target data $x_{tgt}$ is weakly transformed and passed to a teacher model $\theta_{tch}$, 
-              and postprocessed to obtain teacher preds $\hat{p}_{tgt}$. Distillation loss $L_{distill}$ is computed between 
-              teacher and student predictions. A stop gradient (SG) is used on the teacher model, and the teacher is updated 
-              every training step to be the EMA of the student's weights.  
-            </li>
-          </ol>
-        </p>
 
-        <p>
-          To demonstrate the broad applicability of our framework, we re-implement five recent DAOD methods on top of ALDI using 
-          the following settings. The methods are: <a href="https://link.springer.com/article/10.1007/s11263-021-01447-x">SADA</a>,
-           <a href="https://arxiv.org/abs/2206.06293">Probabilistic Teacher (PT)</a>, 
-          <a href="https://arxiv.org/abs/2003.00707">Unbiased Mean Teacher (UMT)</a>, 
-          <a href="https://arxiv.org/abs/2212.01322">Masked-Image Consistency (MIC)</a>, and 
-          <a href="https://arxiv.org/abs/2111.13216">Adaptive Teacher (AT)</a>.
-        </p>
-        <img src="static/images/aldi_table.png"/>
-        <p>
-          <b>Burn-in:</b> fixed duration (Fixed), our approach (Ours, see ALDI++ below). 
-          <b>Augs. $T_{src}, T_{tgt}$:</b> Random flip (F), multi-scale (M), crop & pad (CP), color jitter (J), 
-          cutout (C), MIC. ${\frac{1}{2}}$: augs used on half the images in the batch. 
-          <b>$\frac{B_{tgt}}{B}$:</b> Target-domain portion of minibatch of size $B$. 
-          <b>Postprocess:</b> Processing of teacher preds before distillation: sigmoid/softmax (Sharpen), sum class preds 
-          for pseudo-objectness (Sum), conf. thresholding (Thresh), NMS. 
-          <b>$L_{distill}$:</b> Distillation losses: hard pseudo-labels (Hard), continuous targets (Soft). 
-          <b>$L_{align}$:</b> Feature alignment losses: image-level adversarial (Img), instance-level adversarial (Inst), 
-          image-to-image translation (Img2Img). 
-          <b>AP50$_{FCS}$:</b> Performance on Foggy Cityscapes. 
-          $^\dagger$: settings used in \methodname implementation (last column) but not in the original implementation 
-          (second-to-last column). $^{at}$: source-only and oracle results sourced from AT.</p>
+
+      <!-- Tabs Navigation -->
+  <div class="tabs is-boxed is-centered">
+    <ul>
+      <li class="tab-link is-active" data-target="tab1"><a>The ALDI Framework</a></li>
+      <li class="tab-link" data-target="tab2"><a>SADA</a></li>
+      <li class="tab-link" data-target="tab3"><a>Adaptive Teacher</a></li>
+      <li class="tab-link" data-target="tab4"><a>MIC</a></li>
+      <li class="tab-link" data-target="tab5"><a>Probabilistic Teacher</a></li>
+      <li class="tab-link" data-target="tab6"><a>ALDI++</a></li>
+    </ul>
+  </div>
+
+  <!-- Tab 1 Content -->
+  <div id="tab1" class="tab-content is-active">
+    <div class="columns">
+      <div class="column"></div>
+      <div class="column is-half">
+        <object data="static/images/aldi_framework_final.svg" type="image/svg+xml" width="100%">
+          <img src="static/images/aldi_framework_final.png" width="100%" />
+        </object>
       </div>
+      <div class="column"></div>
     </div>
+  </div>
+
+  <!-- Tab 2 Content -->
+  <div id="tab2" class="tab-content">
+    <div class="columns">
+      <div class="column"></div>
+      <div class="column is-half">
+        <object data="static/images/aldi_framework_final.svg" type="image/svg+xml" width="100%">
+          <img src="static/images/aldi_framework_final.png" width="100%" />
+        </object>
+      </div>
+      <div class="column"></div>
+    </div>
+  </div>
+
+  <!-- Tab 3 Content -->
+  <div id="tab3" class="tab-content">
+    <div class="columns">
+      <div class="column"></div>
+      <div class="column is-half">
+        <object data="static/images/aldi_framework_final.svg" type="image/svg+xml" width="100%">
+          <img src="static/images/aldi_framework_final.png" width="100%" />
+        </object>
+      </div>
+      <div class="column"></div>
+    </div>
+  </div>
+
+  <!-- Tab 4 Content -->
+  <div id="tab4" class="tab-content">
+    <div class="columns">
+      <div class="column"></div>
+      <div class="column is-half">
+        <object data="static/images/aldi_framework_final.svg" type="image/svg+xml" width="100%">
+          <img src="static/images/aldi_framework_final.png" width="100%" />
+        </object>
+      </div>
+      <div class="column"></div>
+    </div>
+  </div>
+
+  <!-- Tab 5 Content -->
+  <div id="tab5" class="tab-content">
+    <div class="columns">
+      <div class="column"></div>
+      <div class="column is-half">
+        <object data="static/images/aldi_framework_final.svg" type="image/svg+xml" width="100%">
+          <img src="static/images/aldi_framework_final.png" width="100%" />
+        </object>
+      </div>
+      <div class="column"></div>
+    </div>
+  </div>
+
+  <!-- Simple JS to toggle active tab and show corresponding content -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabLinks = document.querySelectorAll('.tab-link');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          // Remove 'is-active' from all tabs and tab contents
+          tabLinks.forEach(item => item.classList.remove('is-active'));
+          tabContents.forEach(content => content.classList.remove('is-active'));
+
+          // Add 'is-active' to the clicked tab
+          this.classList.add('is-active');
+
+          // Show the targeted content
+          const target = this.getAttribute('data-target');
+          document.getElementById(target).classList.add('is-active');
+        });
+      });
+    });
+  </script>
+
+
+
+      <div class="content has-text-centered">
+        <br>
+        <p>
+          Many existing methods can be viewed as special cases of ALDI (use tabs to view different methods).
+          </p>
+        
+      </div>
+    </div> 
   </section>
 
   <hr />
 
   <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3">ALDI++: Improving DAOD</h2>
-      <div class="content has-text-justified">
-        
-        <p>
-          We propose two novel enhancements to the <i>Align and Distill</i> approach, resulting in a new method ALDI++. 
-          These enhancements lead to state-of-the-art results.
-        </p>
-
-        <h4 class="title is-4">Robust Burn-In</h2>
+    <div class="container is-max-desktop has-text-centered">
+      <h2 class="title is-3">ALDI++: A State-of-the-Art Method for DAOD</h2>
+      <div class="content has-text-centered">
 
         <p>
-          First we propose a new ''burn-in'' strategy for pretraining a teacher model $\theta_{tch}$ on source-only data $X_{src}$. 
-          A key challenge in student-teacher methods is improving target-domain pseudo-label quality. 
-          We point out that psuedo-label quality in the early stages of self-training is largely determined by the 
-          <i>out-of-distribution (OOD) generalization</i> capabilities of the initial teacher model $\theta^{init}_{tch}$, 
-          and thus propose a training strategy aimed at improving OOD generalization during burn-in.
-          We add strong data augmentations including random resizing, color jitter, and random erasing, and keep an EMA copy of the 
-          model during burn-in.
+          Within the ALDI design space, we propose a new method, <b>ALDI++</b>. We improve upon prior work via a <b>robust burn-in</b> procedure (left & center) and <b>multi-task soft distillation</b> (right).<br>
+          
         </p>
 
         <div class="columns">
           <!-- <div class="column"></div> -->
-          <div class="column is-one-half">
+          <div class="column is-one-third">
             <div class="columns">
               <div class="column"></div>
               <div class="column is-6">
@@ -317,44 +356,46 @@
             </div>
           </div>
           <!-- <div class="column"></div> -->
-          <div class="column is-one-half">
+          <div class="column is-one-third">
             <img src="static/images/burn_in_viz_v6.png" width="100%"/>
           </div>
           <!-- <div class="column"></div> -->
+          <div class="column is-one-third">
+
+            <div class="columns">
+              <div class="column"></div>
+              <div class="column is-8">
+                <object data="static/images/distill.svg" type="image/svg+xml" width="100%">
+                  <img src="static/images/distill.png" width="100%"/>
+                </object>
+              </div>
+              <div class="column"></div>
+            </div>
+
+            
+          </div>
         </div>
         
-        <p>
-          Our proposed burn-in strategy improves AP50$_{FCS}$ by +4.7 and reduces training time by 10x compared to no burn-in.
-        </p>
+          <p>
+            Please see our <a href="https://arxiv.org/pdf/2403.12029.pdf">paper</a> for more implementation details.
+          </p>
 
-        <h4 class="title is-4">Multi-task Soft Distillation</h2>
+          <hr>
+          <div>
+          <p>
+            <h4>Experimental Results</h4>
+          </p>
 
+          <br>
           <div class="columns">
-            <div class="column"></div>
-            <div class="column is-one-half">
-              <object data="static/images/distill.svg" type="image/svg+xml" width="100%">
-                <img src="static/images/distill.png" width="100%"/>
-              </object>
-            </div>
-            <div class="column"></div>
+            <img src="static/images/sota_v6.png" width="100%"/>
           </div>
 
           <p>
-            Most prior work utilizes confidence thresholding and non-maximum suppression to generate ''hard'' pseudo-labels from 
-            teacher predictions $\hat{p}_{tgt}$. However in object detection this strategy is sensitive to the confidence threshold 
-            chosen, leading to both false positive and false negative errors that harm self-training.
-            We take inspiration from the knowledge distillation literature and propose instead using ''soft'' distillation 
-            losses—<i>i.e.,</i> using teacher prediction scores as targets without thresholding—allowing us to eliminate 
-            the confidence threshold hyperparameter. 
+            ALDI++ achieves <b>state-of-the-art results</b> on <b>all benchmarks</b> studied without dataset-specific hyperparameter tuning.
+          </p>
 
-          </p>
-          <p>
-            We distill each task of Faster R-CNN—Region Proposal Network localization ($rpn$) and objectness ($obj$), and 
-            Region-of-Interest Heads localization ($roih$) and classification ($cls$)—independently.
-            At each stage, the teacher provides distillation targets for the same set of input proposals used by the 
-            student—<i>i.e.,</i> anchors $A$ in the first stage, and <i>student</i> region proposals $p^{rpn}_{tgt}$ in the second stage. 
-            Please see our paper for more implementation details.
-          </p>
+          </div>
 
       </div>
     </div>
@@ -363,19 +404,9 @@
   <hr />
 
   <section class="section">
-    <div class="container is-max-desktop">
+    <div class="container is-max-desktop has-text-centered">
       <h2 class="title is-3">The CFC-DAOD Dataset</h2>
       <div class="content has-text-justified">
-        
-
-        <p>
-          DAOD benchmarks have focused largely on urban driving scenarios with synthetic distribution 
-          shifts (<i>e.g.,</i> <a href="https://www.cityscapes-dataset.com/">Cityscapes</a>, 
-          <a href="https://www.cityscapes-dataset.com/">Foggy Cityscapes</a>, 
-          <a href="https://fcav.engin.umich.edu/projects/driving-in-the-matrix">Sim10k</a>). 
-          We argue a greater diversity of benchmarks is needed to determine whether DAOD methods
-          are broadly applicable and to ensure we are not overfitting to one particular domain.
-        </p>
 
         <div class="columns">
           <div class="column"></div>
@@ -406,24 +437,16 @@
   <hr />
 
   <section class="section">
-    <div class="container is-max-desktop">
+    <div class="container is-max-desktop has-text-centered">
       <h2 class="title is-3">A New Experimental Protocol for DAOD</h2>
-      <div class="content has-text-justified">
-        
-        <p>
-          To measure DAOD methods' performance, researchers use <i>source-only models</i> and <i>oracle models</i> as points of 
-          reference. Source-only models—sometimes also referred to as <i>baselines</i>—are trained with source-domain data only, 
-          representing a lower bound for performance without domain adaptation. Oracle models are trained with <i>supervised</i> 
-          target-domain data, representing a fully-supervised upper bound. The goal in DAOD is to close the gap between source-only 
-          and oracle performance without target-domain supervision. 
-          
-        </p>
+      <div class="content has-text-centered">
+
         <p>
           We find that in prior work,source-only and oracle models are consistently constructed in a way that does not properly 
           isolate domain-adaptation-specific components, leading to misattribution of performance improvements. 
         </p>
 
-
+        
 
         <p>
           <div class="columns">
@@ -431,55 +454,23 @@
           </div>
         </p>
 
+
         <p>
-          The goal of DAOD is to develop adaptation techniques that use unlabeled target-domain data to improve target-domain performance. 
-          Thus, in order to properly isolate <i>adaptation-specific</i> techniques, <b>any technique that does not need target-domain data 
-          to run should also be used by source-only and oracle models.</b> In our case, this means that source-only and oracle models 
-          should also utilize the same strong augmentations and EMA updates as DAOD methods. We show that including these components 
+
+          We show that including these components
           significantly improves both source-only and oracle model performance (+7.2 and +2.6 AP50 on Foggy Cityscapes, respectively). 
-          This has significant implications for DAOD research: because source-only and oracle models have not been constructed with 
-          equivalent components, performance gains stemming from better generalization have until now been <i>misattributed</i> 
-          to DAOD. With properly constructed source-only and oracle models, the gains from DAOD are much more modest.
-        </p>
+         </p>
 
+        <hr>
 
-        <h4 class="title is-4">Modernizing Architectures</h2>
+        <h4>Experimental Results</h4>
 
-          <p>
-            Prior art in DAOD has used older backbones (<i>e.g.,</i> VGG-16) in order to compare to previously-published results. 
-            The underlying assumption is that methods will perform equivalently across backbone architectures. 
-            By reimplementing methods in ALDI, we are able to upgrade to a modern detector framework and backbone, and show 
-            that in fact the <i>ranking of methods changes across benchmarks and architectures</i>, revealing that previously-published 
-            results may be uninformative for practitioners using modern architectures.
-          </p>
-
-      </div>
-    </div>
-  </section>
-
-  <hr />
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3">Results</h2>
-      <div class="content has-text-justified">
-        
-        <div class="columns">
-            <img src="static/images/sota_v6.png" width="100%"/>
-        </div>
+        <img src="static/images/aldi_banner_4.png" />
 
         <p>
-          <!-- ALDI++ outperforms all prior work on CS → FCS, Sim10k → CS, and CFC Kenai → Channel.  -->
-          We provide a fair comparison of ALDI++ with five existing state-of-the-art approaches by upgrading them to use the 
-          ALDI framework. We see that some prior methods continue to provide benefit on top of a modern architecture but 
-          others lag behind modern source-only models. ALDI++ outperforms prior work on all datasets studied by a significant 
-          margin: +3.5 AP50 on CS → FCS, +5.7 AP50 on Sim10k → CS, and +2.0 AP50 on CFC Kenai → Channel. 
-          Notably, ALDI++ is the <i>only</i> method to outperform a source-only model on Sim10k → CS.
-        </p>
-
-        <p>
-          Our framework, dataset, and state-of-the-art method offer a critical reset for DAOD and provide a strong foundation 
-          for future research. 
+          Our protocol offers researchers the opportunity to rigorously compare to strong baselines. 
+          Not all existing methods outperform a fair source-only baseline. For those that do, there is still
+          room for improvement, especially with stronger backbones like ViT.
         </p>
 
       </div>
@@ -487,34 +478,20 @@
   </section>
 
   <hr />
-
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">Acknowledgements</h2>
-      <p>
-        This material is based upon work supported by: NSF CISE Graduate Fellowships Grant #2313998, MIT EECS department fellowship 
-        #4000184939, MIT J-WAFS seed grant #2040131, and Caltech Resnick Sustainability Institute Impact Grant ''Continuous, 
-        accurate and cost-effective counting of migrating salmon for conservation and fishery management in the Pacific Northwest.'' 
-        Any opinions, findings, and conclusions or recommendations expressed in this material are those of the authors and do not 
-        necessarily reflect the views of NSF, MIT, J-WAFS, Caltech, or RSI. The authors acknowledge the MIT SuperCloud and Lincoln 
-        Laboratory Supercomputing Center for providing HPC resources. We also thank the Alaska Department of Fish and Game for 
-        their ongoing collaboration and for providing data, and Sam Heinrich, Neha Hulkund, Kai Van Brunt, and Rangel Daroya for 
-        helpful feedback.
-      </p>
-    </div>
-  </section>
 
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@misc{kay2024align,
-      title={Align and Distill: Unifying and Improving Domain Adaptive Object Detection}, 
-      author={Justin Kay and Timm Haucke and Suzanne Stathatos and Siqi Deng and Erik Young and Pietro Perona and Sara Beery and Grant Van Horn},
-      year={2024},
-      eprint={2403.12029},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
-} 
+      <pre><code>@article{
+        kay2025align,
+        title={Align and Distill: Unifying and Improving Domain Adaptive Object Detection},
+        author={Justin Kay and Timm Haucke and Suzanne Stathatos and Siqi Deng and Erik Young and Pietro Perona and Sara Beery and Grant Van Horn},
+        journal={Transactions on Machine Learning Research},
+        issn={2835-8856},
+        year={2025},
+        url={https://openreview.net/forum?id=ssXSrZ94sR},
+        note={Featured Certification}
+}
       </code></pre>
     </div>
   </section>
