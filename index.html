@@ -461,10 +461,12 @@
         <p>
           CFC-DAOD focuses on detecting fish (white bounding boxes) in sonar imagery under domain shift 
           caused by environmental differences between the training location (Kenai) and testing location (Channel). 
-          Our dataset contains 168k bounding boxes in 29k frames sampled from 150 new videos captured over two days from 
+          With 168k bounding boxes in 29k frames from 150 videos, the dataset is substantially larger 
+          than existing DAOD benchmarks while targeting a real-world challenge.
+           <!-- captured over two days from 
           3 different sonar cameras on the Channel river, enabling DAOD experiments. Our dataset is substantially larger 
           than existing DAOD benchmarks, and we show that the ranking of DAOD methods is not consistent across datasets, thus 
-          the research community will benefit from another point of comparison.
+          the research community will benefit from another point of comparison. -->
         </p>
 
       </div>
@@ -479,7 +481,7 @@
       <div class="content has-text-centered">
 
         <p>
-          We find that in prior work,source-only and oracle models are consistently constructed in a way that does not properly 
+          We find that in prior work, source-only and oracle models are consistently constructed in a way that does not properly 
           isolate domain-adaptation-specific components, leading to misattribution of performance improvements. 
         </p>
 
@@ -496,6 +498,9 @@
 
           We show that including these components
           significantly improves both source-only and oracle model performance (+7.2 and +2.6 AP50 on Foggy Cityscapes, respectively). 
+          Practically, this
+          means that source-only and oracle models are significantly stronger than previously thought, setting more challenging
+          performance targets for algorithm developers.
          </p>
 
         <hr>
